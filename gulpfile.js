@@ -2,6 +2,7 @@ var gulp = require('gulp')
 var sass = sass = require('gulp-sass')
 var copy = copy = require('gulp-copy')
 var minify = require('gulp-minify')
+var concat = require('gulp-concat')
 
 const RESOURCES_PATH = 'app/Resources'
 const COMPILED_PATH = 'web'
@@ -23,13 +24,7 @@ gulp.task('fonts', function () {
 
 gulp.task('js', function () {
   return gulp.src(RESOURCES_PATH + '/js/*.js')
-              .pipe(minify({
-                ext: {
-                  src: '-debug.js',
-                  min: '.js'
-                },
-                ignoreFiles: []
-              }))
+              .pipe(concat('main.js'))
               .pipe(gulp.dest(COMPILED_PATH + '/js'))
 })
 

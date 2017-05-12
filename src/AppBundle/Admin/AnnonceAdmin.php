@@ -9,16 +9,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class AnnonceAdmin extends Admin
 {
-
-    public function getNewInstance()
-    {
-        $instance = parent::getNewInstance();
-        $dateTime = new \DateTime();
-        $dateTime->setTime(0, 0, 0);
-        $instance->setDateDisponible($dateTime);
-        return $instance;
-    }
-
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

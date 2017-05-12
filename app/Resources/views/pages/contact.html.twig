@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+  <h1>Contactez-nous</h1>
+
+  {% if form.vars.submitted and form.vars.valid %}
+      <div class="alert alert-success" role="alert">Votre message a bien été envoyé</div>
+  {% elseif form.vars.submitted %}
+      <div class="alert alert-danger" role="alert">Il y a eu une problème lors de l'envoi de votre message</div>
+  {% endif %}
+
+  {{ form_start(form, {'attr': {'class': 'form-horizontal', 'id': 'contact',} }) }}
+    <div class="form-group">
+      {{ form_label(form.nom, 'Prénom Nom') }}
+      {{ form_errors(form.nom) }}
+      {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.email, 'Adresse mail') }}
+      {{ form_errors(form.email) }}
+      {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.message, 'Message') }}
+      {{ form_errors(form.message, {'attr': {'class': 'form-control'}}) }}
+      {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <br>
+    <div class="form-group">
+      {{ form_widget(form.submit, {'attr': {'class': 'btn btn-default center-block'}}) }}
+    </div>
+  {{ form_end(form) }}
+
+{% endblock %}

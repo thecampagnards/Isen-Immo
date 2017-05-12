@@ -194,6 +194,20 @@ class Annonce
      */
     private $active;
 
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $dateCreation;
+
+    public function __construct()
+    {
+        $this->dateCreation = new \DateTime();
+        $this->dateDisponible = new \DateTime();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function __toString(){
       return $this->nom;
     }
@@ -687,13 +701,6 @@ class Annonce
     {
         return $this->informations;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set active
@@ -751,5 +758,29 @@ class Annonce
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set dateCreation
+     *
+     * @param \DateTime $dateCreation
+     *
+     * @return Annonce
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreation
+     *
+     * @return \DateTime
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
     }
 }

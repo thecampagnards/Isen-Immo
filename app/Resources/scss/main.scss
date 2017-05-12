@@ -9,6 +9,34 @@
   }
 }
 
+ul.resultats {
+  > li.resultat {
+    list-style: none;
+    display: inline-block;
+
+    .img {
+      width: 400px;
+      height: 220px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+
+    }
+
+    .prix {
+      position: relative;
+      bottom: 110px;
+      display: block;
+      background-color: #fff;
+      padding: 0 5px;
+      float: left;
+      font-size: 1.2em;
+    }
+  }
+}
+
 .footer {
   position: absolute;
   bottom: 0;

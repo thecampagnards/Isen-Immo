@@ -1,7 +1,6 @@
 var gulp = require('gulp')
 var sass = sass = require('gulp-sass')
 var copy = copy = require('gulp-copy')
-var minify = require('gulp-minify')
 var concat = require('gulp-concat')
 
 const RESOURCES_PATH = 'app/Resources'

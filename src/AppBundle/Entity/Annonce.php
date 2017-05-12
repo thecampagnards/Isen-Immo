@@ -37,7 +37,7 @@ class Annonce
     /**
      * @var int
      *
-     * @ORM\Column(name="telephone_proprietaire", type="integer")
+     * @ORM\Column(name="telephone_proprietaire", type="string", length=12)
      * @Assert\NotBlank
      * @Assert\Regex("/^0[1-68]([-. ]?[0-9]{2}){4}$/")
      */
@@ -70,7 +70,7 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="complementAdresse", type="string", length=125)
+     * @ORM\Column(name="complementAdresse", type="string", length=125, nullable=true)
      * @Assert\NotBlank
      */
     private $complementAdresse;
@@ -177,6 +177,40 @@ class Annonce
      * @ORM\Column(name="informations", type="string", length=255)
      */
     private $informations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Fichier")
+     * @Assert\Count(
+     *      max = 3,
+     *      maxMessage = "Vous ne pouvez pas mettre plus de {{ limit }} images"
+     * )
+     */
+    private $images;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $dateCreation;
+
+    public function __construct()
+    {
+        $this->dateCreation = new \DateTime();
+        $this->dateDisponible = new \DateTime();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString(){
+      return $this->nom;
+    }
 
     /**
      * Get id
@@ -666,5 +700,87 @@ class Annonce
     public function getInformations()
     {
         return $this->informations;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Annonce
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \AppBundle\Entity\Fichier $image
+     *
+     * @return Annonce
+     */
+    public function addImage(\AppBundle\Entity\Fichier $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \AppBundle\Entity\Fichier $image
+     */
+    public function removeImage(\AppBundle\Entity\Fichier $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set dateCreation
+     *
+     * @param \DateTime $dateCreation
+     *
+     * @return Annonce
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreation
+     *
+     * @return \DateTime
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
     }
 }

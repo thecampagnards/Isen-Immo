@@ -20,3 +20,9 @@ services:
         arguments: [~, AppBundle\Entity\Contact, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Contact',  label: Contact,  icon: '<i class="fa fa-envelope"></i>', position:right }
+
+    admin.fichier:
+        class: AppBundle\Admin\FichierAdmin
+        arguments: [~, AppBundle\Entity\Fichier, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Fichier', show_in_dashboard: false }

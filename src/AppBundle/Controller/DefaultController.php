@@ -13,9 +13,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('pages/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
+        $annonces = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('AppBundle:Annonce')->findByActive(true);
+
+        return $this->render('pages/index.html.twig', array('annonces' => $annonces));
     }
 }

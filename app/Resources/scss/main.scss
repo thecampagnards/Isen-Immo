@@ -1,3 +1,63 @@
-* {
-  font-family: Arial;
+@import "_variables.scss";
+
+.navbar-inverse .navbar-nav {
+  > li > a.btn {
+    padding: 6px 16px;
+    margin-top: 13.5px;
+    color: #444444;
+    margin-left: 10px;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 25px 15%;
+  color: #ccc;
+
+  > div {
+    text-align: left;
+    padding: 0 20px;
+
+    &:not(:last-child) {
+      border-right: 1px solid #fff;
+    }
+  }
+
+  p a {
+    color: #fff;
+    font-weight: bold;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  li {
+    list-style: none;
+
+    &.title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+}
+
+.background-red {
+  background-color: $red-color;
+}
+
+.red-text {
+  color:$red-color;
+}
+
+.background-white {
+  background-color: #fff;
+}
+
+.white-color {
+  color: #fff;
 }

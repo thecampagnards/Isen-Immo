@@ -17,7 +17,7 @@ gulp.task('scss', function () {
 })
 
 gulp.task('fonts', function () {
-  return gulp.src(RESOURCES_PATH + '/fonts/*')
+  return gulp.src(RESOURCES_PATH + '/fonts/**')
               .pipe(copy(COMPILED_PATH + '/fonts', {prefix: 7}))
 })
 

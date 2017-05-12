@@ -7,3 +7,16 @@ services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+
+    admin.annonce:
+        class: AppBundle\Admin\AnnonceAdmin
+        arguments: [~, AppBundle\Entity\Annonce, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Annonce', label: Lister les annonces,  icon: '<i class="fa fa-home"></i>', position:right }
+
+    admin.contact:
+        class: AppBundle\Admin\ContactAdmin
+        arguments: [~, AppBundle\Entity\Contact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Contact',  label: Contact,  icon: '<i class="fa fa-envelope"></i>', position:right }

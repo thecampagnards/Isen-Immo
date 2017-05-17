@@ -17,7 +17,7 @@
         <div class="resultats row">
             {% for annonce in annonces %}
                 <div class="resultat col-md-4 col-sm-6 col-xs-12">
-                    <a href="">
+                    <a href="{{ path('annonce', {id: annonce.id}) }}">
                         <div class="img"><img src="{{ asset(annonce.images[0].getWebPath) }}" alt="img"></div>
                         <h4>{{ annonce.nom }} <small>{{ annonce.surface }} m²</small></h4>
                         <b class="prix" title="Prix par mois">{{ annonce.loyer }} €</b>

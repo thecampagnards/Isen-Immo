@@ -1,1 +1,32 @@
-{{ dump(annonce) }}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="appart">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>{{ annonce.nom }}</h1>
+                <h2>{{ annonce.adresse }}</h2>
+                <p>{{ annonce.description }}</p>
+            </div>
+
+            <div class="col-md-5">
+                <img src="{{ asset(annonce.images[0].getWebPath) }}" alt="Photo {{ annonce.nom }}">
+
+                {% if annonce.images.count() > 1 %}
+                    <div class="row">
+                        {% for image in annonce.images | slice(1, annonce.images|length) %}
+                            <div class="col-md-3">
+                                <img src="{{ asset(image.getWebPath) }}" alt="Photo {{ annonce.nom }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        {{ dump(annonce) }}
+    </section>
+{% endblock %}
+
+

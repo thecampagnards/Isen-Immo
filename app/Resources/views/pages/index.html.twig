@@ -62,9 +62,6 @@
       // on recupère la geoloc via l'adresse
       geocoder.geocode({ 'address': adress}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          if(link === null){
-            map.setCenter(results[0].geometry.location)
-          }
           var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
@@ -77,6 +74,8 @@
             marker.addListener('click', function() {
               window.location.href = link
             })
+          }else{
+            map.setCenter(results[0].geometry.location)
           }
         }
       })

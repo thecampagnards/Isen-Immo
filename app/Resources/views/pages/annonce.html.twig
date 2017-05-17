@@ -1,6 +1,36 @@
-{{ dump(annonce) }}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="appart">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>{{ annonce.nom }}</h1>
+                <h2>{{ annonce.adresse }}</h2>
+                <p>{{ annonce.description }}</p>
+            </div>
+
+            <div class="col-md-5">
+                <img src="{{ asset(annonce.images[0].getWebPath) }}" alt="Photo {{ annonce.nom }}">
+
+                {% if annonce.images.count() > 1 %}
+                    <div class="row">
+                        {% for image in annonce.images | slice(1, annonce.images|length) %}
+                            <div class="col-md-3">
+                                <img src="{{ asset(image.getWebPath) }}" alt="Photo {{ annonce.nom }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        {{ dump(annonce) }}
+    </section>
+{% endblock %}
 
 {#
 Avoir la distance de l'isen
 https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={{ (annonce.adresse ~ ' ' ~ annonce.ville ~ ' ' ~ annonce.codePostal)|url_encode }}&destinations=Isen+Brest&key=%20AIzaSyBbIonYXuRpFpAlsK_Ua92m4_Ow5ElZeEc
 #}
+

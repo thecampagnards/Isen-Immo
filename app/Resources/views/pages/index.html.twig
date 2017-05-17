@@ -1,19 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="criteres">
+    <section class="filtres">
+        <form class="form-horizontal" role="search">
+            <div class="form-group barre">
+                <input type="text" class="form-control" placeholder="Rechercher">
+                <button type="submit" class="btn btn-default">OK</button>
+            </div>
 
+
+
+        </form>
     </section>
 
     <section class="resultats">
-        <ul class="resultats">
-            <li class="resultat">
+        <div class="resultats row">
+            {% for annonce in annonces %}
+                <div class="resultat col-md-4 col-sm-6 col-xs-12">
+                    <a href="">
+                        <div class="img"><img src="{{ asset(annonce.images[0].getWebPath) }}" alt="img"></div>
+                        <h4>{{ annonce.nom }} <small>{{ annonce.surface }} m²</small></h4>
+                        <b class="prix" title="Prix par mois">{{ annonce.loyer }} €</b>
+                        <i class="nb-images">{{ annonce.images.count() }} image{{ (annonce.images.count() > 1 ? 's' : '') }}</i>
+                    </a>
+                </div>
+            {%  endfor %}
 
-                <div class="img"><img src="{{ asset('images/photo.jpg') }}" alt="img"></div>
-                <h4>Titre de l'anonce</h4>
-                <b class="prix" title="Prix par mois">350 €</b>
-            </li>
-        </ul>
+        </div>
+
+        {{ dump(annonces) }}
     </section>
 {% endblock %}
 

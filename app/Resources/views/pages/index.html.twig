@@ -90,12 +90,12 @@
       })
     }
     // ajout du marker de l'isen
-    addMarkerByAdress('ISEN 20 rue Cuirassé Bretagne 29200 Brest', 'Isen Brest', null)
+    addMarkerByAdress('{{ adresse_isen }}', 'Isen', null)
     // ajout des marker de logement
     {% for annonce in annonces %}
     addMarkerByAdress('{{ annonce.adresse }} {{ annonce.ville }} {{ annonce.codePostal }}', '{{ annonce.loyer }}€', '{{ path('annonce', {id: annonce.id}) }}')
     {% endfor %}
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-P78_NdIocIny3qprkof_6qqbXp_sMt8&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap"></script>
 {% endblock %}

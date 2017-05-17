@@ -71,7 +71,6 @@ class Annonce
      * @var string
      *
      * @ORM\Column(name="complementAdresse", type="string", length=125, nullable=true)
-     * @Assert\NotBlank
      */
     private $complementAdresse;
 

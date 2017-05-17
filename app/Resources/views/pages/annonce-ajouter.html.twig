@@ -1,5 +1,145 @@
-{{ dump(form) }}
+{% extends 'base.html.twig' %}
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+{% block body %}
+
+<section>
+  {{ form_errors(form) }}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal', 'id': 'annonce-ajouter'} }) }}
+    <div class="form-group">
+      {{ form_label(form.nomProprietaire, 'Votre nom *') }}
+      {{ form_errors(form.nomProprietaire) }}
+      {{ form_widget(form.nomProprietaire, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.emailProprietaire, 'Votre email *') }}
+      {{ form_errors(form.emailProprietaire) }}
+      {{ form_widget(form.emailProprietaire, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.telephoneProprietaire, 'Votre téléphone *') }}
+      {{ form_errors(form.telephoneProprietaire) }}
+      {{ form_widget(form.telephoneProprietaire, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.nom, 'Titre de l\'annonce *') }}
+      {{ form_errors(form.nom) }}
+      {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.images) }}
+      {{ form_errors(form.images) }}
+      <ul id="image-fields-list" data-prototype="{{ form_widget(form.images.vars.prototype)|e }}">
+      {% for imageField in form.images %}
+          <li>
+              {{ form_errors(imageField) }}
+              {{ form_widget(imageField) }}
+          </li>
+      {% endfor %}
+      </ul>
+      <a href="#" id="add-another-image">Ajouter une image</a>
+    </div>
+    <div class="form-group">
+      {{ form_label(form.adresse, 'Adresse du bien *') }}
+      {{ form_errors(form.adresse) }}
+      {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.complementAdresse, 'Adresse complémentaire du bien') }}
+      {{ form_errors(form.complementAdresse) }}
+      {{ form_widget(form.complementAdresse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.codePostal, 'Code postal du bien *') }}
+      {{ form_errors(form.codePostal) }}
+      {{ form_widget(form.codePostal, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.ville, 'Ville du bien *') }}
+      {{ form_errors(form.ville) }}
+      {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.typeBien, 'Type de bien *') }}
+      {{ form_errors(form.typeBien) }}
+      {{ form_widget(form.typeBien, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.typeLocation, 'Type de location du bien *') }}
+      {{ form_errors(form.typeLocation) }}
+      {{ form_widget(form.typeLocation, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.dureeMin, 'Durée minimum *') }}
+      {{ form_errors(form.dureeMin) }}
+      {{ form_widget(form.dureeMin, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.dureeMax, 'Durée maximum *') }}
+      {{ form_errors(form.dureeMax) }}
+      {{ form_widget(form.dureeMax, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.dateDisponible, 'Date de disponibilitée *') }}
+      {{ form_errors(form.dateDisponible) }}
+      {{ form_widget(form.dateDisponible, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.surface, 'Surface *') }}
+      {{ form_errors(form.surface) }}
+      {{ form_widget(form.surface, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.nombrePieces, 'Nombre de pièces *') }}
+      {{ form_errors(form.nombrePieces) }}
+      {{ form_widget(form.nombrePieces, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.commodites, 'Commodités *') }}
+      {{ form_errors(form.commodites) }}
+      {{ form_widget(form.commodites, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.loyer, 'Loyer *') }}
+      {{ form_errors(form.loyer) }}
+      {{ form_widget(form.loyer, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.charges, 'Charges *') }}
+      {{ form_errors(form.charges) }}
+      {{ form_widget(form.charges, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.description, 'Description *') }}
+      {{ form_errors(form.description) }}
+      {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+      {{ form_label(form.informations, 'Informations *') }}
+      {{ form_errors(form.informations) }}
+      {{ form_widget(form.informations, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <br>
+    <div class="form-group">
+      {{ form_widget(form.submit, {'attr': {'class': 'btn btn-default center-block', 'label': 'Envoyer'}}) }}
+    </div>
+  {{ form_end(form) }}
+</section>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+  var imageCount = '{{ form.images|length }}'
+
+  jQuery(document).ready(function() {
+    jQuery('#add-another-image').click(function(e) {
+      e.preventDefault()
+      var emailList = jQuery('#image-fields-list')
+      var newWidget = emailList.attr('data-prototype')
+      newWidget = newWidget.replace(/__name__/g, imageCount)
+      imageCount++
+      var newLi = jQuery('<li></li>').html(newWidget)
+      newLi.appendTo(emailList)
+    })
+  })
+</script>
+{% endblock %}

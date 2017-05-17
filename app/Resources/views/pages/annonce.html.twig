@@ -5,7 +5,12 @@
         <div class="row">
             <div class="col-md-7">
                 <h1>{{ annonce.nom }}</h1>
+                <br>
+                <h4>Description du bien</h4>
                 <p class="description">{{ annonce.description }}</p>
+
+                <br>
+                <h4>Informations sur le bien</h4>
 
                 <table class="table table-striped">
                     <tr>
@@ -15,19 +20,32 @@
 
                     <tr>
                         <th>Loyer</th>
-                        <td class="red-color">{{ annonce.loyer }}</td>
+                        <td class="red-text"><b>{{  annonce.loyer }}</b> €</td>
                     </tr>
 
                     <tr>
                         <th>Charges</th>
-                        <td>{{ annonce.charges }}</td>
+                        <td>{{ annonce.charges }} €</td>
                     </tr>
-                </table>
 
-                <table class="table table-striped">
                     <tr>
                         <th>Type de bien</th>
                         <td>{{ annonce.typeBien }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Nombre de pièce(s)</th>
+                        <td>{{ annonce.nombrePieces }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Surface</th>
+                        <td>{{ annonce.surface }} m²</td>
+                    </tr>
+
+                    <tr>
+                        <th>Commodités</th>
+                        <td>{{ annonce.commodites }}</td>
                     </tr>
 
                     <tr>
@@ -67,8 +85,29 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Informations sur le propriétaire</h4>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ annonce.nomProprietaire }}</td>
+                    </tr>
 
-        {{ dump(annonce) }}
+                    <tr>
+                        <th>Mail</th>
+                        <td>{{ annonce.emailProprietaire }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Téléphone</th>
+                        <td>{{ annonce.telephoneProprietaire }}</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+
     </section>
 {% endblock %}
 

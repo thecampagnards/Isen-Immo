@@ -5,13 +5,13 @@
         <title>{% block title %}ISEN Immo{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/bootswatch.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% include 'components/_menu.html.twig' %}
         {% block body %}{% endblock %}
         {% include 'components/_footer.html.twig' %}
+        <script src="{{ asset('js/main.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

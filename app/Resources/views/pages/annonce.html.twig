@@ -5,18 +5,61 @@
         <div class="row">
             <div class="col-md-7">
                 <h1>{{ annonce.nom }}</h1>
-                <h2>{{ annonce.adresse }}</h2>
-                <p>{{ annonce.description }}</p>
+                <p class="description">{{ annonce.description }}</p>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ annonce.adresse }} {{ ((annonce.complementAdresse is not empty) ? annonce.complementAdresse : '' ) }} {{ annonce.codePostal }} {{ annonce.ville }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Loyer</th>
+                        <td class="red-color">{{ annonce.loyer }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Charges</th>
+                        <td>{{ annonce.charges }}</td>
+                    </tr>
+                </table>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Type de bien</th>
+                        <td>{{ annonce.typeBien }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Type de Location</th>
+                        <td>{{ annonce.typeLocation }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Durée min.</th>
+                        <td>{{ annonce.dureeMin }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Durée max.</th>
+                        <td>{{ annonce.dureeMax }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Disponible le </th>
+                        <td>{{ annonce.dateDisponible|date('j/m/Y') }}</td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="col-md-5">
-                <img src="{{ asset(annonce.images[0].getWebPath) }}" alt="Photo {{ annonce.nom }}">
+            <div class="col-md-5 popup-gallery">
+                <a href="{{ asset(annonce.images[0].getWebPath) }}" title="{{ annonce.nom }}"><img src="{{ asset(annonce.images[0].getWebPath) }}" alt="Photo {{ annonce.nom }}" title="Cliquer pour agrandir"></a>
 
                 {% if annonce.images.count() > 1 %}
                     <div class="row">
                         {% for image in annonce.images | slice(1, annonce.images|length) %}
                             <div class="col-md-3">
-                                <img src="{{ asset(image.getWebPath) }}" alt="Photo {{ annonce.nom }}">
+                                <a href="{{ asset(image.getWebPath) }}" title="{{ annonce.nom }}"><img src="{{ asset(image.getWebPath) }}" alt="Photo {{ annonce.nom }}" title="Cliquer pour agrandir"></a>
                             </div>
                         {% endfor %}
                     </div>

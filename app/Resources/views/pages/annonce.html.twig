@@ -4,7 +4,7 @@
     <section class="appart">
         <div class="row">
             <div class="col-md-7">
-                <h1>{{ annonce.nom }}</h1>
+                <h1>{{ annonce.nom }} <small>{{ (annonce.typeProprietaire == "Particulier" ? 'Particulier' : "Professionnel") }}</small></h1>
                 <br>
                 <h4>Description du bien</h4>
                 <p class="description">{{ annonce.description }}</p>

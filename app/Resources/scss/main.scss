@@ -8,6 +8,7 @@
     margin-top: 13.5px;
     color: #444444;
     margin-left: 10px;
+    margin-right: 10px;
   }
 
 }
@@ -21,11 +22,16 @@ nav {
   img {
     width: 56px;
     margin-top: 4px;
+    margin-left: 4px;
   }
 }
 
 section {
-  padding: 20px 8%;
+  padding: 30px 8%;
+
+  h1 {
+    margin-bottom: 30px;
+  }
 
   &.filtres {
 
@@ -108,6 +114,18 @@ section {
   }
 }
 
+#annonce-ajouter {
+  .col-md-6 {
+    width: 49%;
+    margin-right: 1%;
+  }
+
+  .col-md-12 {
+    width: 99%;
+    margin-right: 1%;
+  }
+}
+
 .appart {
   img {
     width: 100%;
@@ -118,8 +136,25 @@ section {
   }
 }
 
+.form-control {
+  height: 30px;
+}
+
+label {
+  margin: 0;
+}
+
+#appbundle_annonce_dateDisponible {
+  box-shadow: none;
+
+  select {
+    width: 60px;
+    margin-right: 10px;
+  }
+}
+
 .footer {
-  height: 160px;
+  min-height: 160px;
   width: 100%;
   text-align: center;
   padding: 25px 15%;
@@ -129,10 +164,23 @@ section {
   > div {
     text-align: left;
     padding: 0 20px;
+    min-height: 110px;
 
     &:not(:last-child) {
       border-right: 1px solid #fff;
+
+      @media screen and (max-width: 991px) {
+        border-right: none;
+      }
     }
+
+    @media screen and (max-width: 991px) {
+      min-height: 40px;
+    }
+  }
+
+  ul {
+    padding: 0;
   }
 
   p a {

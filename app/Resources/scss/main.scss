@@ -1,6 +1,8 @@
 @import "_variables.scss";
 @import "_bootswatch.scss";
 @import "_popup.scss";
+@import "_ion.rangeSlider.scss";
+@import "_ion.rangeSlider.skinFlat.scss";
 
 .navbar-inverse .navbar-nav {
   > li > a.btn {
@@ -43,12 +45,11 @@ section {
 
       input {
         display: inline-block;
-        width: calc(100% - 80px);
       }
     }
 
     #map {
-      height: 400px;
+      height: 300px;
       width: 100%;
     }
   }

@@ -17,4 +17,31 @@ $(document).ready(function() {
             }
         }
     })
+
+    $("#loyer_input").ionRangeSlider({
+        type: "double",
+        grid: true,
+        min: 0,
+        max: 1200,
+        from: 100,
+        to: 1100,
+        onChange: function (data) {
+
+        }
+    });
+
+    $("#surface_input").ionRangeSlider({
+        type: "double",
+        grid: true,
+        min: 0,
+        max: 200,
+        from: 10,
+        to: 190,
+        onChange: function (data) {
+
+        }
+    });
+
+
 })
+

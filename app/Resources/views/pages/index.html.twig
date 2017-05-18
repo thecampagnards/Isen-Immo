@@ -3,10 +3,24 @@
 {% block body %}
     <section class="filtres">
         <form class="form-horizontal" role="search">
-            <div class="form-group barre">
-                <input type="text" class="form-control form-listener" placeholder="Rechercher" id="rechercher">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group barre">
+                        <input type="text" class="form-control form-listener" placeholder="Rechercher" id="rechercher">
+                    </div>
+                </div>
             </div>
-            <div id="map"></div>
+
+            <div class="row">
+                <div class="col-md-7">
+                    <label for="loyer_input">Loyer</label><input type="text" id="loyer_input" name="loyer_input" value="" /><br><br>
+                    <label for="surface_input">Surface</label><input type="text" id="surface_input" name="surface_input" value="" />
+                </div>
+
+                <div class="col-md-5">
+                    <div id="map"></div>
+                </div>
+            </div>
         </form>
     </section>
     <section class="resultats">

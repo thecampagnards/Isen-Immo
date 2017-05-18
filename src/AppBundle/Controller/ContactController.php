@@ -30,11 +30,7 @@ class ContactController extends Controller
                     ->getManager()
                     ->getRepository('AppBundle:Utilisateur')->findEmailsByRole('ADMIN');
 
-            if($form->get('copie')->getData()){
-              dump('ok');
-              $adminMails[] = $contact->getEmail();
-            }
-
+            $adminMails[] = $this->getParameter('mail_club');
             $message = \Swift_Message::newInstance()
               ->setSubject('Contact depuis votre site')
               ->setFrom($this->getParameter('mailer_user'))

@@ -19,6 +19,8 @@ class ContactAdmin extends Admin
     {
         $formMapper
         ->add('nom', 'text', array('help'=> 'Nom du contact.'))
+        ->add('prenom', 'text', array('help'=> 'Nom du contact.'))
+        ->add('telephone', 'text', array('help'=> 'Téléphone du contact.'))
         ->add('date', 'date', array('help' => 'Date du message.'))
         ->add('email', 'email', array('help' => 'Email du contact.'))
         ->add('message', 'textarea', array('help' => 'Message du contact.'))
@@ -32,6 +34,8 @@ class ContactAdmin extends Admin
     {
         $datagridMapper
         ->add('nom')
+        ->add('prenom')
+        ->add('telephone')
         ->add('email')
         ->add('date')
         ;
@@ -45,6 +49,8 @@ class ContactAdmin extends Admin
     {
         $listMapper
         ->addIdentifier('nom')
+        ->addIdentifier('prenom')
+        ->addIdentifier('telephone')
         ->addIdentifier('email')
         ->addIdentifier('date')
         ;

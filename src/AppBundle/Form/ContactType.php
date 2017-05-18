@@ -20,6 +20,8 @@ class ContactType extends AbstractType
     {
       $builder
               ->add('nom')
+              ->add('prenom')
+              ->add('telephone')
               ->add('email', EmailType::class)
               ->add('message', TextareaType::class)
               ->add('submit', SubmitType::class, array('label' => "ENVOYER"));

@@ -37,7 +37,11 @@ class AnnonceType extends AbstractType
         ->add('emailProprietaire', EmailType::class)
         ->add('telephoneProprietaire')
         ->add('nomProprietaire')
-        ->add('typeProprietaire', ChoiceType::class, array('choices' => array('Professionnel' => 'Professionnel', 'Particulier' => 'Particulier')))
+        ->add('typeProprietaire', ChoiceType::class, array(
+          'choices' => array('Professionnel' => 'Professionnel', 'Particulier' => 'Particulier'),
+          'expanded' => true,
+          'multiple' => false
+        ))
         ->add('nom')
         ->add('images', CollectionType::class, array(
             'entry_type'   => FichierType::class,

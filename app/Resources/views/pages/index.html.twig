@@ -15,6 +15,9 @@
                 <div class="col-md-7">
                     <label for="loyer_input">Loyer</label><input type="text" id="loyer_input" name="loyer_input" value="" /><br><br>
                     <label for="surface_input">Surface</label><input type="text" id="surface_input" name="surface_input" value="" />
+                    <label for="piece_input">Nombre de pièce(s) minimum</label><input type="number" class="form-control form-listener" id="piece_input" name="piece_input" value="1" />
+                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Professionnel" checked/> Professionnel<br>
+                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Particulier"/> Particulier<br>
                 </div>
 
                 <div class="col-md-5">
@@ -47,12 +50,17 @@
 {% block javascripts %}
 <script>
 
-  $('.form-listener').on('change paste keyup', function(){
+  var fromLoyer = 100, toLoyer = 1200, fromSurface = 10, toSurface = 190
+
+  function filter() {
     var rechercher = $('#rechercher').val()
+    var nombrePieces = $('#piece_input').val()
+    var typeProprietaire = $('input[name=type_proprietaire_input]:checked').val()
     $('.resultat').each(function(){
       var resultat = $(this)
       var ok = false
       // on check les champs
+      // champs recherche
       if(rechercher === ''){
         ok = true
       }
@@ -60,14 +68,73 @@
         ok = true
       }
 
-      // on affiche ou non
+      // slider loyer
       if(ok){
-        resultat.show()
-      }else{
-        resultat.hide()
+        var loyer = resultat.attr('data-loyer')
+        if(loyer >= fromLoyer && loyer <= toLoyer) ok = true
+        else ok = false
       }
+
+      // slider surface
+      if(ok){
+        var surface = resultat.attr('data-surface')
+        if(surface >= fromSurface && surface <= toSurface) ok = true
+        else ok = false
+      }
+
+      // nombre de piece min
+      if(ok){
+        if(resultat.attr('data-nombre-pieces') >= nombrePieces) ok = true
+        else ok = false
+      }
+
+      // type proprio
+      if(ok){
+        if(typeProprietaire === resultat.attr('data-type-proprietaire')) ok = true
+        else ok = false
+      }
+
+      // on affiche ou non
+      ok ? resultat.show() : resultat.hide()
     })
+  }
+
+  $('#loyer_input').ionRangeSlider({
+      type: 'double',
+      grid: true,
+      min: 0,
+      max: 1200,
+      from: fromLoyer,
+      to: toLoyer,
+      //onChange: function (data) {},
+      onFinish: function (data) {
+        fromLoyer = data.from
+        toLoyer = data.to
+        filter()
+      }
   })
+
+  $('#surface_input').ionRangeSlider({
+      type: 'double',
+      grid: true,
+      min: 0,
+      max: 200,
+      from: fromSurface,
+      to: toSurface,
+      //onChange: function (data) {},
+      onFinish: function (data) {
+        fromSurface = data.from
+        toSurface = data.to
+        filter()
+      }
+  })
+
+
+  $('.form-listener').on('change paste keyup', function(){
+    filter()
+  })
+
+  filter()
 
   function initMap() {
     // init de la map

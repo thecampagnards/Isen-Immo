@@ -54,6 +54,14 @@ class Annonce
     /**
      * @var string
      *
+     * @ORM\Column(name="type_proprietaire", type="string", length=65)
+     * @Assert\NotBlank
+     */
+    private $typeProprietaire;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nom", type="string", length=65)
      * @Assert\NotBlank
      */
@@ -781,5 +789,29 @@ class Annonce
     public function getDateCreation()
     {
         return $this->dateCreation;
+    }
+
+    /**
+     * Set typeProprietaire
+     *
+     * @param string $typeProprietaire
+     *
+     * @return Annonce
+     */
+    public function setTypeProprietaire($typeProprietaire)
+    {
+        $this->typeProprietaire = $typeProprietaire;
+
+        return $this;
+    }
+
+    /**
+     * Get typeProprietaire
+     *
+     * @return string
+     */
+    public function getTypeProprietaire()
+    {
+        return $this->typeProprietaire;
     }
 }

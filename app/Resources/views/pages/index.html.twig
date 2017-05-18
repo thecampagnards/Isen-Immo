@@ -12,7 +12,7 @@
     <section class="resultats">
         <div class="resultats row">
             {% for annonce in annonces %}
-                <div class="resultat col-md-4 col-sm-6 col-xs-12" data-nom="{{ annonce.nom }}" data-loyer="{{ annonce.loyer }}" data-surface="{{ annonce.surface }}" data-nombre-pieces="{{ annonce.nombrePieces }}">
+                <div class="resultat col-md-4 col-sm-6 col-xs-12" data-nom="{{ annonce.nom }}" data-loyer="{{ annonce.loyer }}" data-surface="{{ annonce.surface }}" data-nombre-pieces="{{ annonce.nombrePieces }}" data-type-proprietaire="{{ annonce.typeProprietaire }}">
                     <a href="{{ path('annonce', {id: annonce.id}) }}">
                         <div class="img">
                           {% if annonce.images is not empty %}

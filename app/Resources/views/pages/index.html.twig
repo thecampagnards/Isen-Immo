@@ -16,7 +16,8 @@
                     <label for="loyer_input">Loyer</label><input type="text" id="loyer_input" name="loyer_input" value="" /><br><br>
                     <label for="surface_input">Surface</label><input type="text" id="surface_input" name="surface_input" value="" />
                     <label for="piece_input">Nombre de pièce(s) minimum</label><input type="number" class="form-control form-listener" id="piece_input" name="piece_input" value="1" />
-                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Professionnel" checked/> Professionnel<br>
+                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="" checked/> Les deux<br>
+                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Professionnel"/> Professionnel<br>
                     <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Particulier"/> Particulier<br>
                 </div>
 
@@ -51,6 +52,8 @@
 <script>
 
   var fromLoyer = 100, toLoyer = 900, fromSurface = 0, toSurface = 200
+  var markers = []
+  var map
 
   function filter() {
     var rechercher = $('#rechercher').val()
@@ -90,12 +93,17 @@
 
       // type proprio
       if(ok){
-        if(typeProprietaire === resultat.attr('data-type-proprietaire')) ok = true
+        if(!typeProprietaire || typeProprietaire === resultat.attr('data-type-proprietaire')) ok = true
         else ok = false
       }
 
       // on affiche ou non
       ok ? resultat.show() : resultat.hide()
+      // google map
+      if(markers.length != 0){
+        var index = resultat.attr('data-marker-key')
+        if(index) ok ? markers[index].setMap(map) : markers[index].setMap(null)
+      }
     })
   }
 
@@ -136,11 +144,9 @@
     filter()
   })
 
-  filter()
-
   function initMap() {
     // init de la map
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
       zoom: 13,
       scrollwheel: false,
       center: {lat: 48.400, lng: -4.483}
@@ -164,15 +170,15 @@
       scaledSize: new google.maps.Size(42, 25)
     }
 
-    function addMarkerByAdress(adress, title, link){
+    function addMarkerByAdress(adress, title, link, key){
       // on recupère la geoloc via l'adresse
       geocoder.geocode({ 'address': adress}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
-              label: {text: title, color: "white"},
-              title: {text: title, color: "white"},
+              label: {text: title, color: 'white'},
+              title: title,
               icon: markerIsen
           })
           if(link !== null){
@@ -180,6 +186,8 @@
             marker.addListener('click', function() {
               window.location.href = link
             })
+            $('.resultat:nth('+key+')').attr('data-marker-key', markers.length)
+            markers.push(marker)
           }else{
             map.setCenter(results[0].geometry.location)
           }
@@ -187,11 +195,12 @@
       })
     }
     // ajout du marker de l'isen
-    addMarkerByAdress('{{ adresse_isen }}', ' ', null)
+    addMarkerByAdress('{{ adresse_isen }}', ' ', null, null)
     // ajout des marker de logement
-    {% for annonce in annonces %}
-    addMarkerByAdress('{{ annonce.adresse }} {{ annonce.ville }} {{ annonce.codePostal }}', '{{ annonce.loyer }}€', '{{ path('annonce', {id: annonce.id}) }}')
+    {% for key,annonce in annonces %}
+    addMarkerByAdress('{{ annonce.adresse }} {{ annonce.ville }} {{ annonce.codePostal }}', '{{ annonce.loyer }}€', '{{ path('annonce', {id: annonce.id}) }}', {{ key }})
     {% endfor %}
+    filter()
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap"></script>

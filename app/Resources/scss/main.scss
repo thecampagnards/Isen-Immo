@@ -35,6 +35,10 @@ section {
     margin-bottom: 30px;
   }
 
+  &.form {
+    padding: 30px 15%;
+  }
+
   &.filtres {
 
     .barre {
@@ -119,11 +123,31 @@ section {
   .col-md-6 {
     width: 49%;
     margin-right: 1%;
+
+    .postfixe input {
+      width: 95%;
+      display: inline-block;
+    }
   }
 
   .col-md-12 {
     width: 99%;
     margin-right: 1%;
+  }
+
+  .col-xs-12 {
+    @media screen and (max-width: 768px) {
+      width: 99%;
+      margin-right: 1%;
+    }
+  }
+
+  #appbundle_annonce_typeProprietaire {
+    box-shadow: none;
+
+    label {
+      margin-right: 10px;
+    }
   }
 }
 

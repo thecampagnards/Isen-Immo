@@ -37,6 +37,7 @@ class AnnonceType extends AbstractType
         ->add('emailProprietaire', EmailType::class)
         ->add('telephoneProprietaire')
         ->add('nomProprietaire')
+        ->add('typeProprietaire', ChoiceType::class, array('choices' => array('Professionnel' => 'Professionnel', 'Particulier' => 'Particulier')))
         ->add('nom')
         ->add('images', CollectionType::class, array(
             'entry_type'   => FichierType::class,
@@ -63,7 +64,7 @@ class AnnonceType extends AbstractType
         ->add('charges', MoneyType::class)
         ->add('description', TextareaType::class)
         ->add('informations', TextareaType::class)
-        ->add('submit', SubmitType::class)
+        ->add('submit', SubmitType::class, array('label' => 'ENVOYER'))
         ;
     }
 

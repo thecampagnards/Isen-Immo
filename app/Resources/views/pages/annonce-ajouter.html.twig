@@ -14,15 +14,25 @@
 
   {{ form_errors(form) }}
   {{ form_start(form, {'attr': {'class': 'form-horizontal', 'id': 'annonce-ajouter'} }) }}
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-group">
                     {{ form_label(form.nomProprietaire, 'Votre nom *') }}
                     {{ form_errors(form.nomProprietaire) }}
                     {{ form_widget(form.nomProprietaire, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.typeProprietaire, 'Type propriétaire *') }}
+                    {{ form_errors(form.typeProprietaire) }}
+                    {{ form_widget(form.typeProprietaire, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     {{ form_label(form.telephoneProprietaire, 'Votre téléphone *') }}
@@ -146,7 +156,6 @@
               {{ form_widget(form.submit, {'attr': {'class': 'btn btn-default center-block', 'label': 'Envoyer'}}) }}
             </div>
         </div>
-    </div>
   {{ form_end(form) }}
 </section>
 {% endblock %}

@@ -16,9 +16,9 @@ class AnnonceAdmin extends Admin
           ->add('nomProprietaire', 'text', array('help'=> 'Nom du propriétaire.'))
           ->add('emailProprietaire', 'email', array('help'=> 'Email du propriétaire.'))
           ->add('telephoneProprietaire', 'text', array('help'=> 'Telephone du propriétaire.'))
+          ->add('typeProprietaire', 'choice', array('help'=> 'Type de propriétaire.','choices' => array('Professionnel' => 'Professionnel', 'Particulier' => 'Particulier')))
         ->end()
         ->with('Photos')
-          //->add('images', 'sonata_type_model')
           ->add('images', 'sonata_type_model', array(
               'property' => 'media',
               'required' => false,

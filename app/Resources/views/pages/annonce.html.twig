@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ annonce.nom }}{% endblock %}
+
 {% block body %}
     <section class="appart">
         <div class="row">
@@ -115,4 +117,3 @@
 Avoir la distance de l'isen
 https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={{ (annonce.adresse ~ ' ' ~ annonce.ville ~ ' ' ~ annonce.codePostal)|url_encode }}&destinations=Isen+Brest&key=%20AIzaSyBbIonYXuRpFpAlsK_Ua92m4_Ow5ElZeEc
 #}
-

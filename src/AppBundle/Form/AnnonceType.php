@@ -12,10 +12,22 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AnnonceType extends AbstractType
 {
+    private $typeBien;
+    private $typeLocation;
+
+    public function __construct(
+      array $typeBien,
+      array $typeLocation
+    ){
+      $this->typeBien = $typeBien;
+      $this->typeLocation = $typeLocation;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -32,14 +44,15 @@ class AnnonceType extends AbstractType
             'allow_delete' => true,
             'delete_empty' => true,
             'prototype' => true,
-            'by_reference' => false
+            'by_reference' => false,
+            'label' => false
         ))
         ->add('adresse', TextareaType::class)
         ->add('complementAdresse', null, array('required' => false))
         ->add('codePostal', IntegerType::class)
         ->add('ville')
-        ->add('typeBien')
-        ->add('typeLocation')
+        ->add('typeBien', ChoiceType::class, array('choices' => $this->typeBien))
+        ->add('typeLocation', ChoiceType::class, array('choices' => $this->typeLocation))
         ->add('dureeMin')
         ->add('dureeMax')
         ->add('dateDisponible', DateType::class)

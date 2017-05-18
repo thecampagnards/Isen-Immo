@@ -180,7 +180,7 @@ class Annonce
     /**
      * @ORM\ManyToMany(targetEntity="Fichier",cascade={"persist"})
      * @Assert\Count(
-     *      max = 3,
+     *      max = 5,
      *      maxMessage = "Vous ne pouvez pas mettre plus de {{ limit }} images"
      * )
      */

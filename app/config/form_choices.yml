@@ -1,0 +1,13 @@
+
+parameters:
+
+  type_bien:
+    Studio: Studio
+    Appartement: Appartement
+    Maison: Maison
+    Loft: Loft
+    Bien atypiques: Bien atypiques
+
+  type_location:
+    Courte durée: Courte durée
+    Longue durée: Longue durée

@@ -26,3 +26,9 @@ services:
         arguments: [~, AppBundle\Entity\Fichier, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'Fichier', show_in_dashboard: false }
+
+    app.ajouter.annonce.form.type:
+        class: AppBundle\Form\AnnonceType
+        arguments: ['%type_bien%', '%type_location%']
+        tags:
+          - { name: form.type, alias: appbundle_annonce }

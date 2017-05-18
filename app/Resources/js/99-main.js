@@ -22,9 +22,10 @@ $(document).ready(function() {
         type: "double",
         grid: true,
         min: 0,
-        max: 1200,
+        max: 1000,
         from: 100,
-        to: 1100,
+        to: 900,
+        postfix: " €",
         onChange: function (data) {
 
         }
@@ -37,6 +38,7 @@ $(document).ready(function() {
         max: 200,
         from: 10,
         to: 190,
+        postfix: " m²",
         onChange: function (data) {
 
         }

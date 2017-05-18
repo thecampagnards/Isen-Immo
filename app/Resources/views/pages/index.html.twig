@@ -80,19 +80,19 @@
     var geocoder = new google.maps.Geocoder()
     // recup des images
     var markerIsen = {
-      url: '{{ asset('images/google-maps-marker-isen.png') }}',
-      size: new google.maps.Size(71, 71),
-      origin: new google.maps.Point(-20, -30),
-      anchor: new google.maps.Point(20, 30),
-      scaledSize: new google.maps.Size(25, 25)
+      url: '{{ asset('images/marker-isen.png') }}',
+      size: new google.maps.Size(140, 70),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(61, 31)
     }
 
     var markerAutre = {
-      url: '{{ asset('images/google-maps-marker-isen.png') }}',
-      size: new google.maps.Size(71, 71),
+      url: '{{ asset('images/marker-map.png') }}',
+      size: new google.maps.Size(42, 25),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),
-      scaledSize: new google.maps.Size(25, 25)
+      scaledSize: new google.maps.Size(42, 25)
     }
 
     function addMarkerByAdress(adress, title, link){
@@ -102,8 +102,8 @@
           var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
-              label: title,
-              title: title,
+              label: {text: title, color: "white"},
+              title: {text: title, color: "white"},
               icon: markerIsen
           })
           if(link !== null){
@@ -118,7 +118,7 @@
       })
     }
     // ajout du marker de l'isen
-    addMarkerByAdress('{{ adresse_isen }}', 'Isen', null)
+    addMarkerByAdress('{{ adresse_isen }}', ' ', null)
     // ajout des marker de logement
     {% for annonce in annonces %}
     addMarkerByAdress('{{ annonce.adresse }} {{ annonce.ville }} {{ annonce.codePostal }}', '{{ annonce.loyer }}€', '{{ path('annonce', {id: annonce.id}) }}')

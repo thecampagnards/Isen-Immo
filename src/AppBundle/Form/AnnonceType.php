@@ -63,7 +63,7 @@ class AnnonceType extends AbstractType
         ->add('charges', MoneyType::class)
         ->add('description', TextareaType::class)
         ->add('informations', TextareaType::class)
-        ->add('submit', SubmitType::class)
+        ->add('submit', SubmitType::class, array('label' => 'ENVOYER'))
         ;
     }
 

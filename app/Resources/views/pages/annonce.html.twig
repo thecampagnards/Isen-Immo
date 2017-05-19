@@ -57,17 +57,22 @@
 
                     <tr>
                         <th>Durée min.</th>
-                        <td>{{ annonce.dureeMin }}</td>
+                        <td>{% if annonce.dureeMin is not empty %}{{ annonce.dureeMin }}{% else %} Non défini {% endif %}</td>
                     </tr>
 
                     <tr>
                         <th>Durée max.</th>
-                        <td>{{ annonce.dureeMax }}</td>
+                        <td>{% if annonce.dureeMax is not empty %}{{ annonce.dureeMax }}{% else %} Non défini {% endif %}</td>
                     </tr>
 
                     <tr>
                         <th>Disponible le </th>
                         <td>{{ annonce.dateDisponible|date('j/m/Y') }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Informations complémentaires </th>
+                        <td>{% if annonce.informations is not empty %}{{ annonce.informations }}{% else %} Non défini {% endif %}</td>
                     </tr>
                 </table>
             </div>

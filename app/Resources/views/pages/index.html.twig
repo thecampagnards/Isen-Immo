@@ -15,10 +15,20 @@
                 <div class="col-md-7">
                     <label for="loyer_input">Loyer</label><input type="text" id="loyer_input" name="loyer_input" value="" /><br><br>
                     <label for="surface_input">Surface</label><input type="text" id="surface_input" name="surface_input" value="" />
-                    <label for="piece_input">Nombre de pièce(s) minimum</label><input type="number" class="form-control form-listener" id="piece_input" name="piece_input" value="1" />
-                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="" checked/> Les deux<br>
-                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Professionnel"/> Professionnel<br>
-                    <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Particulier"/> Particulier<br>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="piece_input">Nombre de pièce(s) minimum</label><input type="number" class="form-control form-listener" id="piece_input" name="piece_input" value="1" />
+                        </div>
+
+                        <div class="col-md-8 proprio">
+                            <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Professionnel"/> Professionnel
+                            <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Particulier"/> Particulier
+                            <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="" checked/> Les deux
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div class="col-md-5">

@@ -4,6 +4,6 @@
 
 {% block body %}
   <p>Nouveau contact depuis votre <a href="{{ url('homepage') }}">site</a>,</p>
-  <p>{{ contact.nom }} {{ contact.prenom }} - {{ contact.email }} vous à contacté à {{ contact.date|date("d/m/Y") }}.</p>
+  <p>{{ contact.nom }} {{ contact.prenom }} - {{ contact.telephone }} - {{ contact.email }} vous à contacté à {{ contact.date|date("d/m/Y") }}.</p>
   <p>{{ contact.message }}</p>
 {% endblock %}

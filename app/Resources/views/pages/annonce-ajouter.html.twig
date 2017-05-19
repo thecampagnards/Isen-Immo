@@ -221,12 +221,14 @@
   jQuery(document).ready(function() {
     jQuery('#add-another-image').click(function(e) {
       e.preventDefault()
-      var emailList = jQuery('#image-fields-list')
-      var newWidget = emailList.attr('data-prototype')
-      newWidget = newWidget.replace(/__name__/g, imageCount)
-      imageCount++
-      var newLi = jQuery('<li></li>').html(newWidget)
-      newLi.appendTo(emailList)
+      if(imageCount < 5){
+        var emailList = jQuery('#image-fields-list')
+        var newWidget = emailList.attr('data-prototype')
+        newWidget = newWidget.replace(/__name__/g, imageCount)
+        imageCount++
+        var newLi = jQuery('<li></li>').html(newWidget)
+        newLi.appendTo(emailList)
+      }
     })
   })
 </script>

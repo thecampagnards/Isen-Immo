@@ -1,0 +1,17 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+      {% if object.images is not empty %}
+        {% if object.images[0] is not empty %}
+          <img src="{{ asset(object.images[0].getWebPath) }}" title="{{ object.nom }}" />
+        {% endif %}
+      {% endif %}
+    </div>
+    <style type="text/css">
+        img {
+            max-width: 220px;
+            max-height: 180px;
+        }
+    </style>
+{% endblock %}

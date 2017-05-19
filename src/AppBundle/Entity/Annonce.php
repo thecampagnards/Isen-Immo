@@ -118,14 +118,14 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="dureeMin", type="string", length=65)
+     * @ORM\Column(name="dureeMin", type="string", length=65, nullable=true)
      */
     private $dureeMin;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dureeMax", type="string", length=65)
+     * @ORM\Column(name="dureeMax", type="string", length=65, nullable=true)
      */
     private $dureeMax;
 
@@ -181,7 +181,7 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="informations", type="string", length=255)
+     * @ORM\Column(name="informations", type="string", length=255, nullable=true)
      */
     private $informations;
 

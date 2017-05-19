@@ -58,8 +58,8 @@ class AnnonceType extends AbstractType
         ->add('ville')
         ->add('typeBien', ChoiceType::class, array('choices' => $this->typeBien))
         ->add('typeLocation', ChoiceType::class, array('choices' => $this->typeLocation))
-        ->add('dureeMin')
-        ->add('dureeMax')
+        ->add('dureeMin', null, array('required' => false))
+        ->add('dureeMax', null, array('required' => false))
         ->add('dateDisponible', DateType::class)
         ->add('surface', IntegerType::class)
         ->add('nombrePieces', IntegerType::class)
@@ -67,7 +67,7 @@ class AnnonceType extends AbstractType
         ->add('loyer', MoneyType::class)
         ->add('charges', MoneyType::class)
         ->add('description', TextareaType::class)
-        ->add('informations', TextareaType::class)
+        ->add('informations', TextareaType::class, array('required' => false))
         ->add('submit', SubmitType::class, array('label' => 'ENVOYER'))
         ;
     }

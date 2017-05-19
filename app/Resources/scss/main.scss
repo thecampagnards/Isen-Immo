@@ -72,6 +72,14 @@ section {
     display: inline-block;
     width: 33%;
 
+    @media screen and (max-width: 1023px) {
+      width: 49%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
+
     &:hover {
       opacity: 0.8;
     }

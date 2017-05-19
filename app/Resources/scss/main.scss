@@ -63,6 +63,10 @@ section {
 
   &.filtres {
 
+    .form-horizontal .form-group {
+      margin: 0;
+    }
+
     .barre {
       display: flex;
       flex-wrap: nowrap;
@@ -71,7 +75,13 @@ section {
 
       input {
         display: inline-block;
+        font-size: 24px;
+        margin-bottom: 30px;
       }
+    }
+
+    #piece_input {
+      margin-bottom: 20px;
     }
 
     #map {

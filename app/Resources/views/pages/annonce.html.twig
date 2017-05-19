@@ -71,20 +71,21 @@
                     </tr>
                 </table>
             </div>
+            {% if annonce.images is not empty %}
+              <div class="col-md-5 popup-gallery">
+                  <a href="{{ asset(annonce.images[0].getWebPath) }}" title="{{ annonce.nom }}"><img src="{{ asset(annonce.images[0].getWebPath) }}" alt="Photo {{ annonce.nom }}" title="Cliquer pour agrandir"></a>
 
-            <div class="col-md-5 popup-gallery">
-                <a href="{{ asset(annonce.images[0].getWebPath) }}" title="{{ annonce.nom }}"><img src="{{ asset(annonce.images[0].getWebPath) }}" alt="Photo {{ annonce.nom }}" title="Cliquer pour agrandir"></a>
-
-                {% if annonce.images.count() > 1 %}
-                    <div class="row">
-                        {% for image in annonce.images | slice(1, annonce.images|length) %}
-                            <div class="col-md-3">
-                                <a href="{{ asset(image.getWebPath) }}" title="{{ annonce.nom }}"><img src="{{ asset(image.getWebPath) }}" alt="Photo {{ annonce.nom }}" title="Cliquer pour agrandir"></a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
+                  {% if annonce.images.count() > 1 %}
+                      <div class="row">
+                          {% for image in annonce.images | slice(1, annonce.images|length) %}
+                              <div class="col-md-3">
+                                  <a href="{{ asset(image.getWebPath) }}" title="{{ annonce.nom }}"><img src="{{ asset(image.getWebPath) }}" alt="Photo {{ annonce.nom }}" title="Cliquer pour agrandir"></a>
+                              </div>
+                          {% endfor %}
+                      </div>
+                      {% endif %}
+              </div>
+            {% endif %}
         </div>
 
         <div class="row">

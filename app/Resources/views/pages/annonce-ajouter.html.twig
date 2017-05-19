@@ -11,7 +11,7 @@
   {% if form.vars.submitted and form.vars.valid %}
       <div class="alert alert-success" role="alert">Votre annonce a bien été envoyé</div>
   {% elseif form.vars.submitted %}
-      <div class="alert alert-danger" role="alert">Il y a eu une problème lors de l'envoi de votre annonce</div>
+      <div class="alert alert-danger" role="alert">Il y a eu un problème lors de l'envoi de votre annonce.</div>
   {% endif %}
 
   {{ form_errors(form) }}

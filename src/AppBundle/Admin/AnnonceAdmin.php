@@ -83,6 +83,7 @@ class AnnonceAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+        ->add('images', 'string', array('template' => 'components/admin/list_camera.html.twig'))
         ->add('emailProprietaire')
         ->add('nom')
         ->add('adresse')

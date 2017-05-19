@@ -139,6 +139,19 @@ section {
   }
 }
 
+#remember_me {
+  width: 25px;
+  display: inline-block;
+  box-shadow: none;
+}
+
+label[for="remember_me"] {
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  padding-top: 26px;
+}
+
 section.form {
   .col-md-6 {
     width: 49%;

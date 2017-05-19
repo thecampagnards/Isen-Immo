@@ -27,10 +27,7 @@
                             <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="" checked/> Les deux
                         </div>
                     </div>
-
-
                 </div>
-
                 <div class="col-md-5">
                     <div id="map"></div>
                 </div>
@@ -38,6 +35,13 @@
         </form>
     </section>
     <section class="resultats">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              Il y a <span id="count-resultat">{{ annonces|length }}</span> résultat(s).
+            </p>
+          </div>
+        </div>
         <div class="resultats row">
             {% for annonce in annonces %}
                 <div class="resultat col-md-4 col-sm-6 col-xs-12" data-nom="{{ annonce.nom }}" data-loyer="{{ annonce.loyer }}" data-surface="{{ annonce.surface }}" data-nombre-pieces="{{ annonce.nombrePieces }}" data-type-proprietaire="{{ annonce.typeProprietaire }}">
@@ -69,6 +73,7 @@
     var rechercher = $('#rechercher').val()
     var nombrePieces = $('#piece_input').val()
     var typeProprietaire = $('input[name=type_proprietaire_input]:checked').val()
+    var countResultat = 0
     $('.resultat').each(function(){
       var resultat = $(this)
       var ok = false
@@ -108,13 +113,21 @@
       }
 
       // on affiche ou non
-      ok ? resultat.show() : resultat.hide()
+      if(ok){
+        countResultat++
+        resultat.show()
+      }else{
+        resultat.hide()
+      }
+
       // google map
       if(markers.length != 0){
         var index = resultat.attr('data-marker-key')
         if(index) ok ? markers[index].setMap(map) : markers[index].setMap(null)
       }
     })
+    // affichage du nombre de résultats
+    $('#count-resultat').html(countResultat)
   }
 
   $('#loyer_input').ionRangeSlider({

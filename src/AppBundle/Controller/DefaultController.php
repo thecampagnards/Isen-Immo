@@ -15,7 +15,7 @@ class DefaultController extends Controller
         $annonces = $this
           ->getDoctrine()
           ->getManager()
-          ->getRepository('AppBundle:Annonce')->findByActive(true);
+          ->getRepository('AppBundle:Annonce')->findBy(array('active'=> true), array('dateCreation' => 'DESC'));
 
         return $this->render('pages/index.html.twig', array('annonces' => $annonces));
     }

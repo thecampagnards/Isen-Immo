@@ -34,14 +34,14 @@
             </div>
         </form>
     </section>
-    <section class="resultats">
-        <div class="row">
-          <div class="col-md-12">
+    <div class="row nb-result">
+        <div class="col-md-12">
             <p>
-              Il y a <span id="count-resultat">{{ annonces|length }}</span> résultat(s).
+                Il y a <span id="count-resultat">{{ annonces|length }}</span> résultat(s).
             </p>
-          </div>
         </div>
+    </div>
+    <section class="resultats">
         <div class="resultats row">
             {% for annonce in annonces %}
                 <div class="resultat col-md-4 col-sm-6 col-xs-12" data-nom="{{ annonce.nom }}" data-loyer="{{ annonce.loyer }}" data-surface="{{ annonce.surface }}" data-nombre-pieces="{{ annonce.nombrePieces }}" data-type-proprietaire="{{ annonce.typeProprietaire }}">

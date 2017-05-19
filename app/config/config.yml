@@ -87,3 +87,7 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+
+sonata_admin:
+    title: 'Isen Immo'
+    title_logo: images/favicon.png

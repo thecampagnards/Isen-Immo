@@ -13,6 +13,14 @@ body {
   margin: 0;
   padding: 0;
   padding-bottom: 210px;
+
+  @media screen and (max-width: 1000px) {
+    padding-bottom: 410px;
+  }
+
+  @media screen and (max-width: 300px) {
+    padding-bottom: 460px;
+  }
 }
 
 body {position: relative;}

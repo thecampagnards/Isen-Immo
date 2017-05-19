@@ -11,6 +11,19 @@ class AnnonceAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+        $annonce = $this->getSubject();
+        $helpOptions = '';
+        if(!empty($annonce->getImages())){
+          foreach ($annonce->getImages() as $image) {
+            if (!empty($image->getMedia()) && $webPath = $image->getWebPath()) {
+              $container = $this->getConfigurationPool()->getContainer();
+              $fullPath = $container->get('request_stack')->getCurrentRequest()->getBasePath().'/'.$webPath;
+              $helpOptions .= '<img src="'.$fullPath.'" class="admin-preview" height="300" /> ';
+            }
+          }
+        }
+
         $formMapper
         ->with('Propriétaire')
           ->add('nomProprietaire', 'text', array('help'=> 'Nom du propriétaire.'))
@@ -25,7 +38,7 @@ class AnnonceAdmin extends Admin
               'by_reference' => false,
               'expanded' => true,
               'multiple' => true,
-              'help' => 'Les images du bien.',
+              'help' => ('Les images du bien.<br/>' . $helpOptions),
             ), array('admin_code' => 'admin.fichier'))
         ->end()
         ->with('Bien')

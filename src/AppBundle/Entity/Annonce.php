@@ -174,14 +174,14 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=65534)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="informations", type="string", length=255, nullable=true)
+     * @ORM\Column(name="informations", type="string", length=65534, nullable=true)
      */
     private $informations;
 

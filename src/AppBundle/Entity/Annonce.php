@@ -153,7 +153,7 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="commodites", type="string", length=65)
+     * @ORM\Column(name="commodites", type="string", length=65, nullable=true)
      */
     private $commodites;
 

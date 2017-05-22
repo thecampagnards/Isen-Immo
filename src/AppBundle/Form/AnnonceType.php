@@ -63,7 +63,7 @@ class AnnonceType extends AbstractType
         ->add('dateDisponible', DateType::class)
         ->add('surface', IntegerType::class)
         ->add('nombrePieces', IntegerType::class)
-        ->add('commodites')
+        ->add('commodites', null, array('required' => false))
         ->add('loyer', MoneyType::class)
         ->add('charges', MoneyType::class)
         ->add('description', TextareaType::class)

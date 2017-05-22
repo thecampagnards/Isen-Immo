@@ -54,7 +54,7 @@ class AnnonceAdmin extends Admin
           ->add('dateDisponible', 'date', array('help'=> 'Date de disponibilité.'))
           ->add('surface', 'integer', array('help'=> 'Surface du bien.'))
           ->add('nombrePieces', 'integer', array('help'=> 'Nombre de pièce du bien.'))
-          ->add('commodites', 'text', array('help'=> 'Commodités du bien.'))
+          ->add('commodites', 'text', array('help'=> 'Commodités du bien.', 'required' => false))
           ->add('loyer', 'integer', array('help'=> 'Loyer du bien.'))
           ->add('charges', 'integer', array('help'=> 'Charges du bien.'))
           ->add('description', 'textarea', array('help'=> 'Description du bien.'))

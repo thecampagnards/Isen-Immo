@@ -61,7 +61,7 @@ class AnnonceAdmin extends Admin
           ->add('informations', 'textarea', array('help'=> 'Information sur le bien.', 'required' => false))
         ->end()
         ->with('Admin')
-          ->add('active', 'checkbox', array('help'=> 'Activer l\'annonce.'))
+          ->add('active', 'checkbox', array('help'=> 'Activer l\'annonce.', 'required' => false))
         ->end()
         ;
     }

@@ -36,7 +36,7 @@ class AnnonceAdmin extends Admin
               'property' => 'media',
               'required' => false,
               'by_reference' => false,
-              'expanded' => true,
+              'expanded' => false,
               'multiple' => true,
               'help' => ('Les images du bien.<br/>' . $helpOptions),
             ), array('admin_code' => 'admin.fichier'))

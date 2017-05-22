@@ -50,6 +50,12 @@ nav {
   }
 }
 
+.navbar-inverse .navbar-nav > li > a:not(.btn), .navbar-inverse .navbar-brand {
+  &:hover {
+    background-color: #B01414;
+  }
+}
+
 section {
   padding: 30px 8%;
 
@@ -87,6 +93,7 @@ section {
     #map {
       height: 305px;
       width: 100%;
+      border: 2px solid #ccc;
     }
   }
 }

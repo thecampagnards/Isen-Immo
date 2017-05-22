@@ -22,9 +22,9 @@
                         </div>
 
                         <div class="col-md-8 proprio">
-                            <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Professionnel"/> Professionnel
-                            <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Particulier"/> Particulier
-                            <input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="" checked/> Les deux
+                            <label for="type_proprietaire_input"><input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Professionnel"/> Professionnel</label>
+                            <label for="type_proprietaire_input"><input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="Particulier"/> Particulier</label>
+                            <label for="type_proprietaire_input"><input type="radio" class="form-control form-listener" name="type_proprietaire_input" value="" checked/> Les deux</label>
                         </div>
                     </div>
                 </div>
@@ -46,14 +46,15 @@
             {% for annonce in annonces %}
                 <div class="resultat col-md-4 col-sm-6 col-xs-12" data-nom="{{ annonce.nom }}" data-loyer="{{ annonce.loyer }}" data-surface="{{ annonce.surface }}" data-nombre-pieces="{{ annonce.nombrePieces }}" data-type-proprietaire="{{ annonce.typeProprietaire }}">
                     <a href="{{ path('annonce', {id: annonce.id}) }}">
+                        <b class="prix" title="Prix par mois">{{ annonce.loyer }} €</b>
+                        <i class="nb-images">{{ annonce.images.count() }} image{{ (annonce.images.count() > 1 ? 's' : '') }}</i>
                         <div class="img">
                           {% if annonce.images is not empty %}
                           <img src="{{ asset(annonce.images[0].getWebPath) }}" alt="img">
                           {% endif %}
                         </div>
                         <h4>{{ annonce.nom }} <small>{{ annonce.surface }} m²</small></h4>
-                        <b class="prix" title="Prix par mois">{{ annonce.loyer }} €</b>
-                        <i class="nb-images">{{ annonce.images.count() }} image{{ (annonce.images.count() > 1 ? 's' : '') }}</i>
+
                     </a>
                 </div>
             {%  endfor %}

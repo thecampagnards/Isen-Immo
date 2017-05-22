@@ -34,8 +34,8 @@ class AnnonceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('emailProprietaire', EmailType::class)
-        ->add('telephoneProprietaire')
+        ->add('emailProprietaire', EmailType::class, array('required' => false))
+        ->add('telephoneProprietaire', null, array('required' => false))
         ->add('nomProprietaire')
         ->add('typeProprietaire', ChoiceType::class, array(
           'choices' => array('Professionnel' => 'Professionnel', 'Particulier' => 'Particulier'),
@@ -60,7 +60,7 @@ class AnnonceType extends AbstractType
         ->add('typeLocation', ChoiceType::class, array('choices' => $this->typeLocation))
         ->add('dureeMin', null, array('required' => false))
         ->add('dureeMax', null, array('required' => false))
-        ->add('dateDisponible', DateType::class)
+        ->add('dateDisponible', DateType::class, array('required' => false))
         ->add('surface', IntegerType::class)
         ->add('nombrePieces', IntegerType::class)
         ->add('commodites', null, array('required' => false))

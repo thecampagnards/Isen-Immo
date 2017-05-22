@@ -25,8 +25,7 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="email_proprietaire", type="string", length=56)
-     * @Assert\NotBlank
+     * @ORM\Column(name="email_proprietaire", type="string", length=56, nullable=true)
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas un email valide.",
      *     checkMX = true
@@ -37,8 +36,7 @@ class Annonce
     /**
      * @var int
      *
-     * @ORM\Column(name="telephone_proprietaire", type="string", length=12)
-     * @Assert\NotBlank
+     * @ORM\Column(name="telephone_proprietaire", type="string", length=12, nullable=true)
      * @Assert\Regex("/^0[1-68]([-. ]?[0-9]{2}){4}$/")
      */
     private $telephoneProprietaire;
@@ -132,7 +130,7 @@ class Annonce
     /**
      * @var \Date
      *
-     * @ORM\Column(name="dateDisponible", type="date")
+     * @ORM\Column(name="dateDisponible", type="date", nullable=true)
      */
     private $dateDisponible;
 

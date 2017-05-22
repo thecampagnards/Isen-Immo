@@ -210,6 +210,15 @@
               window.location.href = link
             })
             $('.resultat:nth('+key+')').attr('data-marker-key', markers.length)
+            for (var i = 0; i < markers.length; i++) {
+              // si même position
+              if(markers[i].position.lat() === marker.position.lat() && markers[i].position.lng() === marker.position.lng()){
+                marker.setPosition(new google.maps.LatLng(
+                  Math.random() >= 0.5 ? marker.position.lat() + 0.00012 : marker.position.lat() - 0.00012,
+                  Math.random() >= 0.5 ? marker.position.lng() + 0.00012 : marker.position.lng() - 0.00012
+                ))
+              }
+            }
             markers.push(marker)
           }else{
             map.setCenter(results[0].geometry.location)

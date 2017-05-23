@@ -4,9 +4,15 @@
         <meta charset="UTF-8" />
         <title>{% block title %}ISEN Immo{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ISEN IMMO est un club de l'ISEN Brest dont le but est de servir d’intermédiaire entre des personnes souhaitant louer des biens et les étudiants de l’ISEN." />
+        <meta property="og:title" content="ISEN Immo">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url('homepage') }}">
+        <meta property="og:image" content="{{ absolute_url(asset('images/favicon.png')) }}">
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
+        
     </head>
     <body>
         {% include 'components/_menu.html.twig' %}

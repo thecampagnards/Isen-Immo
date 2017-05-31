@@ -37,7 +37,7 @@ class Annonce
      * @var int
      *
      * @ORM\Column(name="telephone_proprietaire", type="string", length=12, nullable=true)
-     * @Assert\Regex("/^0[1-68]([-. ]?[0-9]{2}){4}$/")
+     * @Assert\Regex("/^0[1-678]([-. ]?[0-9]{2}){4}$/")
      */
     private $telephoneProprietaire;
 
